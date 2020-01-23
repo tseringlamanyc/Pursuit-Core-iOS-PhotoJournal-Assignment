@@ -13,6 +13,9 @@
 		5224FE9A23DA462800A5EDFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5224FE9823DA462800A5EDFE /* Main.storyboard */; };
 		5224FE9C23DA462E00A5EDFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5224FE9B23DA462E00A5EDFE /* Assets.xcassets */; };
 		5224FE9F23DA462E00A5EDFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5224FE9D23DA462E00A5EDFE /* LaunchScreen.storyboard */; };
+		5224FEAA23DA4F3800A5EDFE /* ImageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5224FEA923DA4F3800A5EDFE /* ImageObject.swift */; };
+		5224FEAC23DA4F4F00A5EDFE /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5224FEAB23DA4F4F00A5EDFE /* FileManager.swift */; };
+		5224FEAE23DA4F5700A5EDFE /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5224FEAD23DA4F5700A5EDFE /* Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		5224FE9B23DA462E00A5EDFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5224FE9E23DA462E00A5EDFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5224FEA023DA462E00A5EDFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5224FEA923DA4F3800A5EDFE /* ImageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageObject.swift; sourceTree = "<group>"; };
+		5224FEAB23DA4F4F00A5EDFE /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		5224FEAD23DA4F5700A5EDFE /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +46,9 @@
 		5224FE8623DA462800A5EDFE = {
 			isa = PBXGroup;
 			children = (
+				5224FEA823DA4F2600A5EDFE /* Model */,
+				5224FEA723DA4EFF00A5EDFE /* Persistance */,
+				5224FEA623DA4EF100A5EDFE /* View Controllers */,
 				5224FE9123DA462800A5EDFE /* Pursuit-Core-iOS-PhotoJournal-Assignment */,
 				5224FE9023DA462800A5EDFE /* Products */,
 			);
@@ -58,13 +67,37 @@
 			children = (
 				5224FE9223DA462800A5EDFE /* AppDelegate.swift */,
 				5224FE9423DA462800A5EDFE /* SceneDelegate.swift */,
-				5224FE9623DA462800A5EDFE /* ViewController.swift */,
 				5224FE9823DA462800A5EDFE /* Main.storyboard */,
 				5224FE9B23DA462E00A5EDFE /* Assets.xcassets */,
 				5224FE9D23DA462E00A5EDFE /* LaunchScreen.storyboard */,
 				5224FEA023DA462E00A5EDFE /* Info.plist */,
 			);
 			path = "Pursuit-Core-iOS-PhotoJournal-Assignment";
+			sourceTree = "<group>";
+		};
+		5224FEA623DA4EF100A5EDFE /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5224FE9623DA462800A5EDFE /* ViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		5224FEA723DA4EFF00A5EDFE /* Persistance */ = {
+			isa = PBXGroup;
+			children = (
+				5224FEAB23DA4F4F00A5EDFE /* FileManager.swift */,
+				5224FEAD23DA4F5700A5EDFE /* Helper.swift */,
+			);
+			path = Persistance;
+			sourceTree = "<group>";
+		};
+		5224FEA823DA4F2600A5EDFE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5224FEA923DA4F3800A5EDFE /* ImageObject.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +171,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5224FEAC23DA4F4F00A5EDFE /* FileManager.swift in Sources */,
 				5224FE9723DA462800A5EDFE /* ViewController.swift in Sources */,
 				5224FE9323DA462800A5EDFE /* AppDelegate.swift in Sources */,
+				5224FEAA23DA4F3800A5EDFE /* ImageObject.swift in Sources */,
 				5224FE9523DA462800A5EDFE /* SceneDelegate.swift in Sources */,
+				5224FEAE23DA4F5700A5EDFE /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
