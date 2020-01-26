@@ -15,4 +15,12 @@ class ImageCell: UICollectionViewCell {
     @IBOutlet weak var picName: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    public func configureCell(imageObject: ImageObject) {
+        // convering data to UIImage
+        guard let image = UIImage(data: imageObject.imageData) else {
+            return
+        }
+        userImage.image = image
+    }
+    
 }

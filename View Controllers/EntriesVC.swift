@@ -49,7 +49,7 @@ class EntriesVC: UIViewController {
         // we will maintain aspect ratio
         let rect = AVMakeRect(aspectRatio: image.size, insideRect: CGRect(origin: CGPoint.zero, size: size))
         
-       // resize image
+        // resize image
         let resizeImage = image.resizeImage(to: rect.size.width, height: rect.size.height)
         
         // converts UIImage to data
@@ -76,6 +76,21 @@ class EntriesVC: UIViewController {
             print("Couldnt create \(error)")
         }
     }
+    
+    
+    @IBAction func addPhoto(_ sender: UIBarButtonItem) {
+        showAddingVC()
+    }
+    
+    
+    private func showAddingVC() {
+        guard let addVC = storyboard?.instantiateViewController(identifier: "AddingVC") as? AddingVC else {
+            fatalError()
+        }
+        present(addVC, animated: true)
+    }
+    
+    
 }
 
 extension EntriesVC: UICollectionViewDataSource {
@@ -84,14 +99,20 @@ extension EntriesVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? ImageCell else {
+            fatalError("Coudlnt down cast to ImageCell")
+        }
+        let imageObject = imageObjects[indexPath.row]
+        cell.configureCell(imageObject: imageObject)
+        return cell
     }
-    
-    
 }
 
 extension EntriesVC: UICollectionViewDelegateFlowLayout {
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let maxWidth: CGFloat = UIScreen.main.bounds.size.width // width of the device
+        let itemWidth: CGFloat = maxWidth * 0.80
+        return CGSize(width: itemWidth, height: itemWidth)  }
 }
 
 extension UIImage {

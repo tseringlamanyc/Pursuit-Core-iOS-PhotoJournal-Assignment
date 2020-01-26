@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UvK-ju-aWE">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -20,7 +20,11 @@
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="UE0-IN-LX3"/>
-                                    <barButtonItem title="Item" image="plus" catalog="system" id="9Nz-bh-6rr"/>
+                                    <barButtonItem title="Item" image="plus" catalog="system" id="9Nz-bh-6rr">
+                                        <connections>
+                                            <action selector="addPhoto:" destination="BYZ-38-t0r" id="LBX-n6-3IY"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="qgW-0a-Gz5"/>
                                 </items>
                             </toolbar>
@@ -55,7 +59,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onS-Nl-cXd">
-                                                    <rect key="frame" x="8" y="245" width="338" height="20.5"/>
+                                                    <rect key="frame" x="8" y="245" width="338" height="20.333333333333314"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -112,7 +116,7 @@
         <!--AddingVC-->
         <scene sceneID="hzo-Ek-3sF">
             <objects>
-                <viewController id="101-oQ-s4R" customClass="AddingVC" customModule="Pursuit_Core_iOS_PhotoJournal_Assignment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddingVC" id="101-oQ-s4R" customClass="AddingVC" customModule="Pursuit_Core_iOS_PhotoJournal_Assignment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pou-e0-moB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -181,7 +185,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S3u-3m-yOR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1937.68115942029" y="133.92857142857142"/>
+            <point key="canvasLocation" x="2055" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aoM-ck-yDg">
