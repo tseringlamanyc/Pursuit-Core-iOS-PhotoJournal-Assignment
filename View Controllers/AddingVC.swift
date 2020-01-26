@@ -9,6 +9,7 @@
 import UIKit
 
 class AddingVC: UIViewController {
+    
     @IBOutlet weak var picDescription: UITextField!
     @IBOutlet weak var userPic: UIImageView!
 
