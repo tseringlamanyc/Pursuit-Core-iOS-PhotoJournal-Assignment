@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		5224FE9323DA462800A5EDFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5224FE9223DA462800A5EDFE /* AppDelegate.swift */; };
 		5224FE9523DA462800A5EDFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5224FE9423DA462800A5EDFE /* SceneDelegate.swift */; };
-		5224FE9723DA462800A5EDFE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5224FE9623DA462800A5EDFE /* ViewController.swift */; };
+		5224FE9723DA462800A5EDFE /* EntriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5224FE9623DA462800A5EDFE /* EntriesVC.swift */; };
 		5224FE9A23DA462800A5EDFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5224FE9823DA462800A5EDFE /* Main.storyboard */; };
 		5224FE9C23DA462E00A5EDFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5224FE9B23DA462E00A5EDFE /* Assets.xcassets */; };
 		5224FE9F23DA462E00A5EDFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5224FE9D23DA462E00A5EDFE /* LaunchScreen.storyboard */; };
@@ -17,13 +17,14 @@
 		5224FEAC23DA4F4F00A5EDFE /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5224FEAB23DA4F4F00A5EDFE /* FileManager.swift */; };
 		5224FEAE23DA4F5700A5EDFE /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5224FEAD23DA4F5700A5EDFE /* Helper.swift */; };
 		5224FEB023DA517300A5EDFE /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5224FEAF23DA517300A5EDFE /* ImageCell.swift */; };
+		52A80B9123DD365E000C4B9E /* AddingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A80B9023DD365E000C4B9E /* AddingVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5224FE8F23DA462800A5EDFE /* Pursuit-Core-iOS-PhotoJournal-Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pursuit-Core-iOS-PhotoJournal-Assignment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5224FE9223DA462800A5EDFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5224FE9423DA462800A5EDFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5224FE9623DA462800A5EDFE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5224FE9623DA462800A5EDFE /* EntriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesVC.swift; sourceTree = "<group>"; };
 		5224FE9923DA462800A5EDFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5224FE9B23DA462E00A5EDFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5224FE9E23DA462E00A5EDFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -32,6 +33,7 @@
 		5224FEAB23DA4F4F00A5EDFE /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		5224FEAD23DA4F5700A5EDFE /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		5224FEAF23DA517300A5EDFE /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		52A80B9023DD365E000C4B9E /* AddingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +82,9 @@
 		5224FEA623DA4EF100A5EDFE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5224FE9623DA462800A5EDFE /* ViewController.swift */,
+				5224FE9623DA462800A5EDFE /* EntriesVC.swift */,
 				5224FEAF23DA517300A5EDFE /* ImageCell.swift */,
+				52A80B9023DD365E000C4B9E /* AddingVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -175,7 +178,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5224FEAC23DA4F4F00A5EDFE /* FileManager.swift in Sources */,
-				5224FE9723DA462800A5EDFE /* ViewController.swift in Sources */,
+				52A80B9123DD365E000C4B9E /* AddingVC.swift in Sources */,
+				5224FE9723DA462800A5EDFE /* EntriesVC.swift in Sources */,
 				5224FE9323DA462800A5EDFE /* AppDelegate.swift in Sources */,
 				5224FEAA23DA4F3800A5EDFE /* ImageObject.swift in Sources */,
 				5224FE9523DA462800A5EDFE /* SceneDelegate.swift in Sources */,
