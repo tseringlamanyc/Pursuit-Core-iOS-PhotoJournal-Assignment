@@ -9,10 +9,19 @@
 import UIKit
 
 class AddingVC: UIViewController {
+    @IBOutlet weak var picDescription: UITextField!
+    @IBOutlet weak var userPic: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
-  
+    
+    
+    @IBAction func photoLibrary(_ sender: UIBarButtonItem) {
+    }
+    
+    
+    @IBAction func cameraButton(_ sender: UIBarButtonItem) {
+    }
+    
 }

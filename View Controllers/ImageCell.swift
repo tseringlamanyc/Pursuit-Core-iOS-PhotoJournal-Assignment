@@ -10,4 +10,9 @@ import UIKit
 
 class ImageCell: UICollectionViewCell {
     
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var picName: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
 }
