@@ -19,7 +19,7 @@ class EntriesVC: UIViewController {
     
     private var selectImage: UIImage? {
         didSet {
-            
+            appendNewPhoto()
         }
     }
     
