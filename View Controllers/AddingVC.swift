@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import AVFoundation
 
-protocol AddingDelegate: AnyObject {
-    func passInfo(vc: AddingVC)
+protocol AddingPicDelegate: AnyObject {
+    func addedPic(imageObject: ImageObject)
 }
 
 class AddingVC: UIViewController {
@@ -19,13 +20,14 @@ class AddingVC: UIViewController {
     
     private var imagePicker = UIImagePickerController()
     
-    weak var delegate: AddingDelegate?
-
+    weak var delegate: AddingPicDelegate?
+    
+    // public var userPhoto: ImageObject?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
     }
-    
     
     @IBAction func photoLibrary(_ sender: UIBarButtonItem) {
         imagePicker.sourceType = .photoLibrary
@@ -38,6 +40,37 @@ class AddingVC: UIViewController {
         present(imagePicker, animated: true)
     }
     
+    @IBAction func savePhoto(_ sender: UIButton) {
+        // converting UIImage to data
+        let selectImage = userPic.image
+        guard let image = selectImage else {
+            return
+        }
+        
+        // size image
+        let size = UIScreen.main.bounds.size
+        
+        // we will maintain aspect ratio
+        let rect = AVMakeRect(aspectRatio: image.size, insideRect: CGRect(origin: CGPoint.zero, size: size))
+        
+        // resize image
+        let resizeImage = image.resizeImage(to: rect.size.width, height: rect.size.height)
+        
+        // converts UIImage to data
+        guard let resizeImageData = resizeImage.jpegData(compressionQuality: 1.0) else {
+            return
+        }
+        
+        // imageObject array
+        let userPhoto = ImageObject(imageData: resizeImageData, date: Date(), description: picDescription.text!)
+        delegate?.addedPic(imageObject: userPhoto)
+        dismiss(animated: true)
+    }
+    
+    
+    @IBAction func cancelButton(_ sender: UIButton) {
+        dismiss(animated: true)
+    }
 }
 
 extension AddingVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -46,7 +79,7 @@ extension AddingVC: UIImagePickerControllerDelegate, UINavigationControllerDeleg
             return
         }
         userPic.image = image
-        delegate?.passInfo(vc: self)
         dismiss(animated: true)
     }
 }
+

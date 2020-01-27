@@ -8,7 +8,14 @@
 
 import UIKit
 
+// TODO: make delegate here for edit button
+protocol EditButtonDelegate: AnyObject {
+    func editButtonPressed(imageObject: ImageObject)
+}
+
 class ImageCell: UICollectionViewCell {
+    
+    weak var delegate: EditButtonDelegate?
     
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var editButton: UIButton!
@@ -20,7 +27,10 @@ class ImageCell: UICollectionViewCell {
         guard let image = UIImage(data: imageObject.imageData) else {
             return
         }
+        delegate?.editButtonPressed(imageObject: imageObject)
         userImage.image = image
+        picName.text = imageObject.description
+        dateLabel.text = imageObject.date.description
     }
-    
 }
+
