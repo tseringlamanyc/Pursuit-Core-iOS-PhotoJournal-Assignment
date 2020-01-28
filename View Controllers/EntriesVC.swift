@@ -21,7 +21,7 @@ class EntriesVC: UIViewController {
     }
     
     public let dataPersistence = DataPersistence<ImageObject>(filename: "images.plist")
-  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         entriesCV.dataSource = self
@@ -41,13 +41,27 @@ class EntriesVC: UIViewController {
         showAddingVC()
     }
     
-    
     private func showAddingVC() {
         guard let addVC = storyboard?.instantiateViewController(identifier: "AddingVC") as? AddingVC else {
             fatalError()
         }
         addVC.delegate = self
         present(addVC, animated: true)
+    }
+    
+    public func showThreeOptions(cell: ImageCell) {
+        guard let indexpath = entriesCV.indexPath(for: cell) else {
+            return
+        }
+        // present an action sheet
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive)
+        let editAction = UIAlertAction(title: "Edit", style: .default)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(deleteAction)
+        alertController.addAction(editAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
     }
 }
 
@@ -62,6 +76,7 @@ extension EntriesVC: UICollectionViewDataSource {
         }
         let imageObject = imageObjects[indexPath.row]
         cell.configureCell(imageObject: imageObject)
+        cell.delegate = self 
         return cell
     }
 }
@@ -86,6 +101,12 @@ extension UIImage {
 extension EntriesVC: AddingPicDelegate {
     func addedPic(imageObject: ImageObject) {
         self.imageObjects.append(imageObject)
+    }
+}
+
+extension EntriesVC: EditButtonDelegate {
+    func editButtonPressed(cell: ImageCell) {
+      showThreeOptions(cell: cell)
     }
 }
 

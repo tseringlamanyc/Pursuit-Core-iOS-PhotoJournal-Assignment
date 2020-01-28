@@ -39,10 +39,13 @@ class ImageCell: UICollectionViewCell {
         guard let image = UIImage(data: imageObject.imageData) else {
             return
         }
-        delegate?.editButtonPressed(cell: self)
         userImage.image = image
         picName.text = imageObject.description
         dateLabel.text = dateFormatter.string(from: imageObject.date)
+    }
+    
+    @IBAction func gearPressed(_ sender: UIButton) {
+        delegate?.editButtonPressed(cell: self)
     }
 }
 

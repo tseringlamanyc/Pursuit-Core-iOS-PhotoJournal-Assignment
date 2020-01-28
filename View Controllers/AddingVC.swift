@@ -22,7 +22,7 @@ class AddingVC: UIViewController {
     
     weak var delegate: AddingPicDelegate?
     
-    // public var userPhoto: ImageObject?
+    public let dataPersistence = DataPersistence<ImageObject>(filename: "images.plist")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +65,11 @@ class AddingVC: UIViewController {
         // imageObject array
         let imageObject = ImageObject(imageData: resizeImageData, date: Date(), description: picDescription.text!)
         delegate?.addedPic(imageObject: imageObject)
+        do {
+            try dataPersistence.createItem(item: imageObject)
+        } catch {
+            print("couldnt save object \(error)")
+        }
         dismiss(animated: true)
     }
     
