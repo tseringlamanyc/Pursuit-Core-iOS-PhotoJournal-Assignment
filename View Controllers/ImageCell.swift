@@ -17,6 +17,8 @@ class ImageCell: UICollectionViewCell {
     
     weak var delegate: EditButtonDelegate?
     
+    public var theImage: ImageObject!
+    
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var picName: UILabel!

@@ -65,11 +65,11 @@ class AddingVC: UIViewController {
         }
         
         // imageObject array
-        let imageObject = ImageObject(imageData: resizeImageData, date: Date(), description: picDescription.text!)
-        theObject = imageObject
-        delegate?.addedPic(imageObject: imageObject)
+        theObject = ImageObject(imageData: resizeImageData, date: Date(), description: picDescription.text!)
+
+        delegate?.addedPic(imageObject: theObject)
         do {
-            try dataPersistence.createItem(item: imageObject)
+            try dataPersistence.createItem(item: theObject)
         } catch {
             print("couldnt save object \(error)")
         }
