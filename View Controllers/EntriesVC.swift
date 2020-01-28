@@ -49,24 +49,8 @@ class EntriesVC: UIViewController {
         present(addVC, animated: true)
     }
     
-    public func showThreeOptions(cell: ImageCell) {
-        guard let indexpath = entriesCV.indexPath(for: cell) else {
-            return
-        }
-        // present an action sheet
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) {[weak self] alertAction in
-            self?.deleteImageObject(indexpath: indexpath)
-        }
-        let editAction = UIAlertAction(title: "Edit", style: .default)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alertController.addAction(deleteAction)
-        alertController.addAction(editAction)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true)
-    }
-    
     public func deleteImageObject(indexpath: IndexPath) {
+        dataPersistence.sync(items: imageObjects)
         do {
             try dataPersistence.deleteItems(index: indexpath.row)
             imageObjects.remove(at: indexpath.row)
@@ -75,6 +59,37 @@ class EntriesVC: UIViewController {
         }
         loadImages()
     }
+    
+    public func segueFromEdit(imageObject: ImageObject) {
+        guard let addVC = storyboard?.instantiateViewController(identifier: "AddingVC") as? AddingVC else {
+            fatalError()
+        }
+        addVC.theObject = imageObject
+        present(addVC, animated: true)
+    }
+
+    public func showThreeOptions(cell: ImageCell) {
+        guard let indexpath = entriesCV.indexPath(for: cell) else {
+            return
+        }
+        // present an action sheet
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) {[weak self] alertAction in
+            self?.deleteImageObject(indexpath: indexpath)
+        }
+        
+        let editAction = UIAlertAction(title: "Edit", style: .default) {[weak self] alertAction in
+            self?.segueFromEdit(imageObject: self!.imageObjects[indexpath.row])
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(deleteAction)
+        alertController.addAction(editAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
+    }
+    
 }
 
 extension EntriesVC: UICollectionViewDataSource {

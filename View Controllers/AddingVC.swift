@@ -20,6 +20,8 @@ class AddingVC: UIViewController {
     
     private var imagePicker = UIImagePickerController()
     
+    public var theObject: ImageObject!
+    
     weak var delegate: AddingPicDelegate?
     
     public let dataPersistence = DataPersistence<ImageObject>(filename: "images.plist")
@@ -64,6 +66,7 @@ class AddingVC: UIViewController {
         
         // imageObject array
         let imageObject = ImageObject(imageData: resizeImageData, date: Date(), description: picDescription.text!)
+        theObject = imageObject
         delegate?.addedPic(imageObject: imageObject)
         do {
             try dataPersistence.createItem(item: imageObject)
