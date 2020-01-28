@@ -42,8 +42,9 @@ class AddingVC: UIViewController {
     
     @IBAction func savePhoto(_ sender: UIButton) {
         // converting UIImage to data
-        let selectImage = userPic.image
-        guard let image = selectImage else {
+        let theImage = userPic.image
+        
+        guard let image = theImage else {
             return
         }
         
@@ -62,8 +63,8 @@ class AddingVC: UIViewController {
         }
         
         // imageObject array
-        let userPhoto = ImageObject(imageData: resizeImageData, date: Date(), description: picDescription.text!)
-        delegate?.addedPic(imageObject: userPhoto)
+        let imageObject = ImageObject(imageData: resizeImageData, date: Date(), description: picDescription.text!)
+        delegate?.addedPic(imageObject: imageObject)
         dismiss(animated: true)
     }
     
