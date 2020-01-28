@@ -17,9 +17,9 @@ public enum DataPersistenceError: Error {
 }
 
 // step 1: Custom delegation - for data persistence
-protocol DataPersistenceDelegate: AnyObject {
-    func didDeleteItem<T>(persistenceHelper: DataPersistence<T>, item: T)
-}
+//protocol DataPersistenceDelegate: AnyObject {
+//    func didDeleteItem<T>(persistenceHelper: DataPersistence<T>, item: T)
+//}
 
 typealias Writeable = Codable & Equatable
 
@@ -31,7 +31,7 @@ class DataPersistence<T: Writeable> {
     // step 2: defining delegate as a reference property that will be registered as the object listening
     // weak var to break any strong referencees
     
-    weak var delegate: DataPersistenceDelegate?
+    //weak var delegate: DataPersistenceDelegate?
     
     public init(filename: String) {
         self.filename = filename
@@ -82,12 +82,12 @@ class DataPersistence<T: Writeable> {
     
     // Delete
     public func deleteItems(index: Int) throws {
-        let deletedItem = items.remove(at: index)
+       items.remove(at: index)
         do {
             try saveItemsToDocumentsDirectory()
             
             // step 3 - use custom delegation reference to notify observer of deletion
-            delegate?.didDeleteItem(persistenceHelper: self, item: deletedItem)
+           // delegate?.didDeleteItem(persistenceHelper: self, item: deletedItem)
         } catch {
             throw DataPersistenceError.deletingError
         }

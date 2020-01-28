@@ -55,13 +55,25 @@ class EntriesVC: UIViewController {
         }
         // present an action sheet
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) {[weak self] alertAction in
+            self?.deleteImageObject(indexpath: indexpath)
+        }
         let editAction = UIAlertAction(title: "Edit", style: .default)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(deleteAction)
         alertController.addAction(editAction)
         alertController.addAction(cancelAction)
         present(alertController, animated: true)
+    }
+    
+    public func deleteImageObject(indexpath: IndexPath) {
+        do {
+            try dataPersistence.deleteItems(index: indexpath.row)
+            imageObjects.remove(at: indexpath.row)
+        } catch {
+            print("Couldn't delete image \(error)")
+        }
+        loadImages()
     }
 }
 
