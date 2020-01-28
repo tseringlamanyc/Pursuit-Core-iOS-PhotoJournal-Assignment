@@ -20,7 +20,11 @@ class AddingVC: UIViewController {
     
     private var imagePicker = UIImagePickerController()
     
-    public var theObject: ImageObject!
+    public var theObject: ImageObject! {
+        didSet {
+            delegate?.addedPic(imageObject: theObject)
+        }
+    }
     
     weak var delegate: AddingPicDelegate?
     
@@ -66,8 +70,7 @@ class AddingVC: UIViewController {
         
         // imageObject array
         theObject = ImageObject(imageData: resizeImageData, date: Date(), description: picDescription.text!)
-
-        delegate?.addedPic(imageObject: theObject)
+//        delegate?.addedPic(imageObject: theObject)
         do {
             try dataPersistence.createItem(item: theObject)
         } catch {

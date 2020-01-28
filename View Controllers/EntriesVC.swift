@@ -68,9 +68,28 @@ class EntriesVC: UIViewController {
         addVC.theObject = theImageObject
         present(addVC, animated: true)
     }
-    
+
     public func showThreeOptions(cell: ImageCell) {
+        guard let indexpath = entriesCV.indexPath(for: cell) else {
+            return
+        }
+        // present an action sheet
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) {[weak self] alertAction in
+            self?.deleteImageObject(indexpath: indexpath)
+        }
+        
+        let editAction = UIAlertAction(title: "Edit", style: .default) {[weak self] alertAction in
+            self?.segueFromEdit(theImageObject: (self?.imageObjects[indexpath.row])!)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(deleteAction)
+        alertController.addAction(editAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true)
     }
     
 }
@@ -116,31 +135,7 @@ extension EntriesVC: AddingPicDelegate {
 
 extension EntriesVC: EditButtonDelegate {
     func editButtonPressed(cell: ImageCell) {
-        guard let indexpath = entriesCV.indexPath(for: cell) else {
-            return
-        }
-        // present an action sheet
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) {[weak self] alertAction in
-            self?.deleteImageObject(indexpath: indexpath)
-        }
-        
-        let editAction = UIAlertAction(title: "Edit", style: .default) {[weak self] alertAction in
-            guard let addVC = self?.storyboard?.instantiateViewController(identifier: "AddingVC") as? AddingVC else {
-                       fatalError()
-          }
-            addVC.delegate = self
-            addVC.theObject = self!.imageObjects[indexpath.row]
-            self?.present(addVC, animated: true)
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alertController.addAction(deleteAction)
-        alertController.addAction(editAction)
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true)
+      showThreeOptions(cell: cell)
     }
 }
 
