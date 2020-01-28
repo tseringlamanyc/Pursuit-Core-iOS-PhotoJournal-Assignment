@@ -15,6 +15,7 @@ class EntriesVC: UIViewController {
     
     private var imageObjects = [ImageObject]() {
         didSet {
+            title = "Photos: \(imageObjects.count)"
             self.entriesCV.reloadData()
         }
     }
@@ -68,7 +69,7 @@ extension EntriesVC: UICollectionViewDataSource {
 extension EntriesVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let maxWidth: CGFloat = UIScreen.main.bounds.size.width // width of the device
-        let itemWidth: CGFloat = maxWidth * 0.80
+        let itemWidth: CGFloat = maxWidth * 0.90
         return CGSize(width: itemWidth, height: itemWidth)  }
 }
 
